@@ -87,11 +87,7 @@ module tc_sram #(
   initial begin : proc_sram_init
     for (int unsigned i = 0; i < NumWords; i++) begin
       for (int unsigned j = 0; j < DataWidth; j++) begin
-        case (SimInit)
-          "zeros":  init_val[i][j] = 1'b0;
-          "ones":   init_val[i][j] = 1'b1;
-          //"random": init_val[i][j] = $urandom();
-          default:  init_val[i][j] = 1'bx;
+        init_val[i][j] = 1'bx;
         endcase
       end
     end
