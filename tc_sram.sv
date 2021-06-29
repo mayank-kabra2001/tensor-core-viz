@@ -83,7 +83,7 @@ module tc_sram #(
   addr_t [NumPorts-1:0] r_addr_q;
 
   // SRAM simulation initialization
-  data_t [NumWords-1:0] init_val;
+  /*data_t [NumWords-1:0] init_val;
   initial begin : proc_sram_init
     for (int unsigned i = 0; i < NumWords; i++) begin
       for (int unsigned j = 0; j < DataWidth; j++) begin
@@ -95,7 +95,7 @@ module tc_sram #(
         endcase
       end
     end
-  end
+  end*/
 
   // set the read output if requested
   // The read data at the highest array index is set combinational.
