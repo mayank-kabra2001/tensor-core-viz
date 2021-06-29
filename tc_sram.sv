@@ -51,7 +51,7 @@
 //                       on write requests.
 
 module tc_sram #(
-  parameter int unsigned NumWords     = 32'd128, // Number of Words in data array
+  parameter int unsigned NumWords     = 32'd32, // Number of Words in data array
   parameter int unsigned DataWidth    = 32'd32,  // Data signal width
   parameter int unsigned ByteWidth    = 32'd8,    // Width of a data byte
   parameter int unsigned NumPorts     = 32'd4,    // Number of read and write ports
