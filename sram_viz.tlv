@@ -130,7 +130,7 @@
      always_ff @(posedge clk_i or negedge rst_ni) begin
        if (!rst_ni) begin
          for (int i = 0; i < NumWords; i++) begin
-           sram[i] <= init_val[i];
+           sram[i] = init_val[i];
          end
          for (int i = 0; i < NumPorts; i++) begin
            r_addr_q[i] <= {AddrWidth{1'b0}};
@@ -212,10 +212,10 @@
    endmodule
    //////////////////////////////////////////////////////////////////////////
    module sram_tb #(
-     parameter int NumWords     = 32'd32, // Number of Words in data array
+     parameter int NumWords     = 32'd128, // Number of Words in data array
      parameter int DataWidth    = 32'd32,  // Data signal width
      parameter int ByteWidth    = 32'd8,    // Width of a data byte
-     parameter int NumPorts     = 32'd4,    // Number of read and write ports
+     parameter int NumPorts     = 32'd2,    // Number of read and write ports
      parameter int Latency      = 32'd1,    // Latency when the read data is available
      parameter bit          PrintSimCfg  = 1'b0,     // Print configuration
      // DEPENDENT PARAMETERS, DO NOT OVERWRITE!
@@ -445,28 +445,28 @@
          },
          renderEach: function(){ 
             let vrf_val = this.getScope().index; 
-            /*let addr_i = this.svSigRef(`sram_tb.dut.addr_i[vrf]`).asInt().toString(16) ;
+            let addr_i = this.svSigRef(`sram_tb.dut.addr_i[vrf]`).asInt().toString(16) ;
             let wdata_i = this.svSigRef(`sram_tb.dut.wdata_i[vrf]`).asInt().toString(16) ;
             let we_i = this.svSigRef(`sram_tb.dut.we_i[vrf]`).asBool(false) ;
             let req_i = this.svSigRef(`sram_tb.dut.req_i[vrf]`).asBool(false) ;
             let be_i = this.svSigRef(`sram_tb.dut.be_i[vrf]`).asInt().toString(16) ;
             let sram_val = this.svSigRef(`sram_tb.dut.sram[addr_i][vrf]`).asBool(false) ;
             let rdata_o = this.svSigRef(`sram_tb.dut.rdata_o[vrf]`).asInt().toString(16) ;
-
-            this.getInitObject("addr_i_data").setText(this.getScope().index + ":" + addr_i);
-            this.getInitObject("wdata_i_data").setText(this.getScope().index + ":" + wdata_i);
-            this.getInitObject("we_i_data").setText(this.getScope().index + ":" + we_i);
-            this.getInitObject("be_i_data").setText(this.getScope().index + ":" + be_i);
-            this.getInitObject("req_i_data").setText(this.getScope().index + ":" + req_i);
-            this.getInitObject("rdata_o_data").setText(this.getScope().index + ":" + rdata_o);
+            
+            this.getInitObject("addr_i_data").setText(this.getIndex + ":" + addr_i);
+            this.getInitObject("wdata_i_data").setText(this.getIndex + ":" + wdata_i);
+            this.getInitObject("we_i_data").setText(this.getIndex + ":" + we_i);
+            this.getInitObject("be_i_data").setText(this.getIndex + ":" + be_i);
+            this.getInitObject("req_i_data").setText(this.getIndex + ":" + req_i);
+            this.getInitObject("rdata_o_data").setText(this.getIndex + ":" + rdata_o);
             var mod1 = (!we_i && req_i) ; 
             if(mod1) { 
                this.getInitObject("rdata_o_data").setText(mod1 ? this.getScope().index + ":" + rdata_o  : this.getScope().index + ":" + "x");
-               }
+            }
             var mod2 = (we_i && req_i) ; 
             if(mod2) { 
                this.getInitObject("wdata_i_data").setText(mod2 ? this.getScope().index + ":" + wdata_i : this.getScope().index + ":" + "x");
-               }*/
+            }
          }
       
    /vector_register_file[m4_eval(M4_VECTOR_REG-1) : 0]
@@ -506,12 +506,10 @@
             },
             renderEach: function() {
                let vrf_val = this.getScope("vector_register_file").index; 
-               /*let sram_val = this.svSigRef(`sram_tb.dut.sram[addr_i][vrf]`).asBool(false) ;
+               let sram_val = this.svSigRef(`sram_tb.dut.sram[addr_i][vrf]`).asBool(false) ;
                let r_addr_q = this.svSigRef(`sram_tb.dut.r_addr_q[vrf]`).asInt().toString(16) ;
-         
                this.getInitObject("r_addr_q_val").setText("r_addr_q[" + this.getScope("vector_register_file").index.toString() + "] : " + r_addr_q);
                this.getInitObject("sram_val").setText("sram[addr_i]_val[" + this.getScope("vector_register_file").index.toString() + "] : " + sram_val.prevCycle().padStart(8,"0") + "->" + sram_val.padStart(8,"0"));
-               */
                this.getInitObject("bank_box").setVisible(true);
             }
             
@@ -575,7 +573,7 @@
                },
                renderEach: function() {
                   //console.log(`Render ${this.getScope("bank").index},${this.getScope("mem").index}`);
-                  /*let vrf = this.getScope("vector_register_file").index.asInt();
+                  let vrf = this.getScope("vector_register_file").index;
                   let addr_i = this.svSigRef(`sram_tb.dut.addr_i[vrf]`).asInt() ;
                   let we_i = this.svSigRef(`sram_tb.dut.we_i[vrf]`).asBool(false) ;
                   let req_i = this.svSigRef(`sram_tb.dut.req_i[vrf]`).asBool(false) ;
@@ -589,10 +587,10 @@
                   }
                   this.getInitObject("index_val_box").setVisible(true); 
                   this.getInitObject("bank_val_box").setVisible(true); 
-                  /*if(mod == 1) {
+                  if(mod == 1) {
                      this.getInitObject("data").setText(wdata_i.toString(16).padStart(8,"0"));
                   }
-                  this.getInitObject("data").setFill(mod ? "blue" : "black");*/
+                  this.getInitObject("data").setFill(mod ? "blue" : "black");
                   
                }
    
