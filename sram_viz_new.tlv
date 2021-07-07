@@ -259,98 +259,112 @@
    *failed = 1'b0;
    /main 
       \viz_alpha 
-            initEach: function() {
-                  let memory = new fabric.Text("SRAM MEMORY (HEX)", {
-                     top: -150,
-                     left: 650,
-                     fontSize: 40,
-                     fontFamily: "monospace"
-                  })
-                  let sram_box = new fabric.Rect({
-                     top: -200  ,
-                     left: 300,
-                     fill: "lightblue",
-                     width: (250 + 28 * M4_MEM_SIZE) * M4_BANK_SIZE,
-                     height: 160 * M4_BANK_SIZE  ,
-                     stroke: "black" 
-                  })
-                  
-                  let rdata_o_arrow = new fabric.Line([300 + (250 + 28 * M4_MEM_SIZE) * M4_BANK_SIZE , 100 , 550 + (250 + 28 * M4_MEM_SIZE) * M4_BANK_SIZE, 100], {
-                     stroke: "#00bfff",
-                     strokeWidth: 3, 
-                     visible: true 
-                  })
-                  let rdata_o_val = new fabric.Text("rdata_o", {
-                     top: 70,
-                     left: 330 + (250 + 28 * M4_MEM_SIZE) * M4_BANK_SIZE,
-                     fontSize: 16,
-                     fontFamily: "monospace"
-                  })
-                  let addr_i_arrow = new fabric.Line([100 , -150 , 300 , -150], {
-                     stroke: "#00bfff",
-                     strokeWidth: 3, 
-                     visible: true 
-                  })
-                  let addr_i_val = new fabric.Text("addr_i", {
-                     top: -170,
-                     left: 10,
-                     fontSize: 16,
-                     fontFamily: "monospace"
-                  })
-                  
-                  let req_i_arrow = new fabric.Line([100 , -20 , 300 , -20], {
-                     stroke: "#00bfff",
-                     strokeWidth: 3, 
-                     visible: true 
-                  })
-                  let req_i_val = new fabric.Text("req_i", {
-                     top: -40,
-                     left: 10,
-                     fontSize: 16,
-                     fontFamily: "monospace"
-                  })
-                  
-                  let we_i_arrow = new fabric.Line([100 , 110 , 300 , 110], {
-                     stroke: "#00bfff",
-                     strokeWidth: 3, 
-                     visible: true 
-                  })
-                  let we_i_val = new fabric.Text("we_i", {
-                     top: 90,
-                     left: 10,
-                     fontSize: 16,
-                     fontFamily: "monospace"
-                  })
-                  
-                  let wdata_i_arrow = new fabric.Line([100 , 250 , 300 , 250], {
-                     stroke: "#00bfff",
-                     strokeWidth: 3, 
-                     visible: true 
-                  })
-                  let wdata_i_val = new fabric.Text("wdata_i", {
-                     top: 230,
-                     left: 10,
-                     fontSize: 16,
-                     fontFamily: "monospace"
-                  })
-                  
-                  let be_i_arrow = new fabric.Line([100 , 400 , 300 , 400], {
-                     stroke: "#00bfff",
-                     strokeWidth: 3, 
-                     visible: true 
-                  })
-                  let be_i_val = new fabric.Text("be_i", {
-                     top: 380,
-                     left: 10,
-                     fontSize: 16,
-                     fontFamily: "monospace"
-                  })
-                  
-                  return{objects: {sram_box, memory ,rdata_o_arrow, rdata_o_val, addr_i_arrow, addr_i_val, req_i_arrow, req_i_val, we_i_arrow, we_i_val, wdata_i_arrow, wdata_i_val, be_i_arrow, be_i_val}}; 
-               },
-            renderEach: function(){
+         initEach: function() {
+               let memory = new fabric.Text("SRAM MEMORY (HEX)", {
+                  top: -150,
+                  left: 1650,
+                  fontSize: 40,
+                  fontFamily: "monospace"
+               })
+               let sram_box = new fabric.Rect({
+                  top: -200  ,
+                  left: 300,
+                  fill: "lightblue",
+                  width: (250 + 28 * M4_MEM_SIZE) * M4_BANK_SIZE,
+                  height: 160 * M4_BANK_SIZE  ,
+                  stroke: "black" 
+               })
                
-            }
+               let rdata_o_arrow = new fabric.Line([300 + (250 + 28 * M4_MEM_SIZE) * M4_BANK_SIZE , 100 , 550 + (250 + 28 * M4_MEM_SIZE) * M4_BANK_SIZE, 100], {
+                  stroke: "#00bfff",
+                  strokeWidth: 3, 
+                  visible: true 
+               })
+               let rdata_o_val = new fabric.Text("rdata_o", {
+                  top: 70,
+                  left: 330 + (250 + 28 * M4_MEM_SIZE) * M4_BANK_SIZE,
+                  fontSize: 16,
+                  fontFamily: "monospace"
+               })
+               let addr_i_arrow = new fabric.Line([100 , -150 , 300 , -150], {
+                  stroke: "#00bfff",
+                  strokeWidth: 3, 
+                  visible: true 
+               })
+               let addr_i_val = new fabric.Text("addr_i", {
+                  top: -170,
+                  left: 10,
+                  fontSize: 16,
+                  fontFamily: "monospace"
+               })
+               
+               let req_i_arrow = new fabric.Line([100 , -20 , 300 , -20], {
+                  stroke: "#00bfff",
+                  strokeWidth: 3, 
+                  visible: true 
+               })
+               let req_i_val = new fabric.Text("req_i", {
+                  top: -40,
+                  left: 10,
+                  fontSize: 16,
+                  fontFamily: "monospace"
+               })
+               
+               let we_i_arrow = new fabric.Line([100 , 110 , 300 , 110], {
+                  stroke: "#00bfff",
+                  strokeWidth: 3, 
+                  visible: true 
+               })
+               let we_i_val = new fabric.Text("we_i", {
+                  top: 90,
+                  left: 10,
+                  fontSize: 16,
+                  fontFamily: "monospace"
+               })
+               
+              let wdata_i_arrow = new fabric.Line([100 , 250 , 300 , 250], {
+                  stroke: "#00bfff",
+                  strokeWidth: 3, 
+                  visible: true 
+               })
+               let wdata_i_val = new fabric.Text("wdata_i", {
+                  top: 230,
+                  left: 10,
+                  fontSize: 16,
+                  fontFamily: "monospace"
+               })
+               
+               let be_i_arrow = new fabric.Line([100 , 400 , 300 , 400], {
+                  stroke: "#00bfff",
+                  strokeWidth: 3, 
+                  visible: true 
+               })
+               let be_i_val = new fabric.Text("be_i", {
+                  top: 380,
+                  left: 10,
+                  fontSize: 16,
+                  fontFamily: "monospace"
+               })
+               let transObj = new fabric.Group(
+                  [
+                  sram_box, memory ,rdata_o_arrow, rdata_o_val, addr_i_arrow, addr_i_val, req_i_arrow, req_i_val, we_i_arrow, we_i_val, wdata_i_arrow, wdata_i_val, be_i_arrow, be_i_val
+                  ],
+                  {originX: "center",
+                   originY: "center",
+                   left: 0,
+                   top: 0,
+                   scaleX: 0.25,
+                   scaleY: 0.25,
+                   angle: 0,
+                   width: 200,
+                   height: 500
+               })
+               
+               return{objects: {transObj/*sram_box, memory ,rdata_o_arrow, rdata_o_val, addr_i_arrow, addr_i_val, req_i_arrow, req_i_val, we_i_arrow, we_i_val, wdata_i_arrow, wdata_i_val, be_i_arrow, be_i_val*/}}; 
+            },
+        renderEach: function(){
+        
+         }
    
    /ports[m4_eval(M4_NO_OF_PORTS - 1) : 0]
       \viz_alpha 
@@ -428,19 +442,33 @@
                })
             let rdata_o_box = new fabric.Rect({
                   top: 80 + 25 * this.getIndex(),
-                  left: 150 + (250 + 28 * M4_MEM_SIZE) * M4_BANK_SIZE,
+                  left: 190 + (250 + 28 * M4_MEM_SIZE) * M4_BANK_SIZE,
                   fill: "white",
                   width: 100,
                   height: 14,
                   stroke: "black"
                })
             let rdata_o_data = new fabric.Text("x", {
-                  top: 180 + 25 * this.getIndex() ,
-                  left: 1210,
+                  top: 80 + 25 * this.getIndex() ,
+                  left: 200 + (250 + 28 * M4_MEM_SIZE) * M4_BANK_SIZE,
                   fontSize: 14,
                   fontFamily: "monospace"
                })
-           return{objects : {addr_i_box, addr_i_data, req_i_box, req_i_data, we_i_box, we_i_data, wdata_i_box, wdata_i_data, be_i_box, be_i_data, rdata_o_box, rdata_o_data}};
+            let transObj = new fabric.Group(
+                  [
+                  addr_i_box, addr_i_data, req_i_box, req_i_data, we_i_box, we_i_data, wdata_i_box, wdata_i_data, be_i_box, be_i_data, rdata_o_box, rdata_o_data
+                  ],
+                  {originX: "center",
+                   originY: "center",
+                   left: 0 + 3 ,
+                   top: 0 + 5 * this.getIndex(),
+                   scaleX: 0.25,
+                   scaleY: 0.25,
+                   angle: 0,
+                   width: 200,
+                   height: 500, 
+               })
+           return{objects : {transObj/*addr_i_box, addr_i_data, req_i_box, req_i_data, we_i_box, we_i_data, wdata_i_box, wdata_i_data, be_i_box, be_i_data, rdata_o_box, rdata_o_data*/}};
          },
          renderEach: function(){ 
             /*let vrf_val = this.getScope().index; 
@@ -472,6 +500,7 @@
    /banks_init[m4_eval(M4_BANK_SIZE-1):0]
       \viz_alpha 
          initEach: function() {
+               debugger
                let regname = new fabric.Text("BANK " + this.getScope("banks_init").index.toString(), {
                   top: -30 ,
                   left: 900 + (this.getScope("banks_init").index) * 1050,
@@ -494,7 +523,7 @@
                
                let bank_box = new fabric.Rect({
                   top: -60 ,
-                  left: 530 + ((this.getScope("banks_init").index) * 520) * 2 ,
+                  left: 530 + ((this.getScope("banks_init").index) * 520) * 2,
                   fill: "#208028",
                   width: 110 + 110 * M4_BANK_SIZE * 2,
                   height: -130 + 14 * M4_MEM_SIZE,
@@ -503,7 +532,7 @@
                
                let vr_box = new fabric.Rect({
                   top: 57 + this.getScope("banks_init").index * 50 ,
-                  left: 470,
+                  left: 470 - ((this.getScope("banks_init").index) * 15),
                   fill: "white",
                   width: 40,
                   height: 14,
@@ -512,19 +541,33 @@
                
                let vr_index = new fabric.Text("VR " + this.getScope("banks_init").index.toString() + ": ", {
                   top: 57 + this.getScope("banks_init").index * 50 ,
-                  left: 470 ,
+                  left: 470 -  ((this.getScope("banks_init").index) * 15) ,
                   fontSize: 14,
                   fontFamily: "monospace"
                })
-            return {objects: {r_addr_q_val, sram_val, bank_box, regname , vr_box, vr_index}};
+               let transObj = new fabric.Group(
+                  [
+                     r_addr_q_val, sram_val, bank_box, regname , vr_box, vr_index                  
+                  ],
+                  {originX: "center",
+                   originY: "center",
+                   top: 0 , 
+                   left: -390 + ((this.getScope("banks_init").index) * 132), 
+                   scaleX: 0.25,
+                   scaleY: 0.25,
+                   angle: 0,
+                   width: 200,
+                   height: 500, 
+               })
+            return {objects: {transObj/*r_addr_q_val, sram_val, bank_box, regname , vr_box, vr_index*/}};
          },
          renderEach: function() {
            /* let vrf_val = this.getScope("banks_init").index; 
             let sram_val = this.svSigRef(`sram_tb.dut.sram[addr_i][vrf]`).asBool(false) ;
             let r_addr_q = this.svSigRef(`sram_tb.dut.r_addr_q[vrf]`).asInt().toString(16) ;
             this.getInitObject("r_addr_q_val").setText("r_addr_q[" + this.getScope("banks_init").index.toString() + "] : " + r_addr_q);
-            this.getInitObject("sram_val").setText("sram[addr_i]_val[" + this.getScope("banks_init").index.toString() + "] : " + sram_val.prevCycle().padStart(8,"0") + "->" + sram_val.padStart(8,"0"));*/
-            this.getInitObject("bank_box").setVisible(true);
+            this.getInitObject("sram_val").setText("sram[addr_i]_val[" + this.getScope("banks_init").index.toString() + "] : " + sram_val.prevCycle().padStart(8,"0") + "->" + sram_val.padStart(8,"0"));
+            this.getInitObject("bank_box").setVisible(true);*/
          }
    
    /vr_size[m4_eval(M4_BANK_SIZE-1):0]
@@ -545,8 +588,21 @@
                   fontSize: 14,
                   fontFamily: "monospace"
                })
+               let transObj = new fabric.Group(
+                  [bank_val_box,
+                   data],
+                  {originX: "center",
+                   originY: "center",
+                   top: -72 + 1.75 * M4_MEM_SIZE + this.getScope("vr_size").index * 12.60 , 
+                   left: -1050 + 140 * M4_BANK_SIZE + ((this.getIndex() % 4) * 256) + (this.getIndex() / 4) * 30.5, 
+                   scaleX: 0.25,
+                   scaleY: 0.25,
+                   angle: 0,
+                   width: 200,
+                   height: 500 
+               })
                
-               return {objects: {bank_val_box, data}};
+               return {objects: {transObj/* bank_val_box, data*/}};
             },
             renderEach: function() {
                //console.log(`Render ${this.getScope("vr_size").index},${this.getScope("mem").index}`);
@@ -562,8 +618,8 @@
               /* if(mod == 1) {
                   this.getInitObject("data").setText(wdata_i.toString(16).padStart(8,"0"));
                }
-               this.getInitObject("data").setFill(mod ? "blue" : "black");
-               */
+               this.getInitObject("data").setFill(mod ? "blue" : "black");*/
+               
             }
    
 \SV
